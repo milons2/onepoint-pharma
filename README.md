@@ -57,6 +57,20 @@ Designed for real-world pharmacy operations including billing, inventory, staff 
 ### 👑 Owner Dashboard
 ![Owner](screenshots/owner-panel.png)
 
+---
+
+### 🧾 Thermal Print
+![Thermal](screenshots/thermal-print.png)
+
+---
+
+### 📊 Today Summary
+![Summary](screenshots/today-summary.png)
+
+---
+
+### 🛠️ Admin Panel
+![Admin](screenshots/admin-panel.png)
 
 ## 🔥 Key Features
 
