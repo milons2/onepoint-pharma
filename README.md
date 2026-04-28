@@ -226,7 +226,7 @@ npm run dev
 
 Computer Engineer
 
-Banglades
+Bangladesh
 
 
 
