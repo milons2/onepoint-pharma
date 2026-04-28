@@ -1,262 +1,120 @@
-\# 💊 OnePoint Pharma POS Management System
+# 💊 OnePoint Pharma - POS & Pharmacy Management System
 
+🚀 A full-featured desktop-based Pharmacy POS system built with Electron, React, Node.js, and PostgreSQL.
 
+Designed for real-world pharmacy operations including billing, inventory, staff control, and reporting.
 
-A \*\*full-stack desktop Pharmacy POS system\*\* built for real-world pharmacy operations including billing, inventory management, reporting, and printer integration.
+---
 
+## 🖥️ System Overview
 
+- 💻 Desktop Application (Electron)
+- ⚡ Fast POS Billing System
+- 📦 Inventory & Stock Management
+- 👨‍⚕️ Role-Based Dashboard (Admin, Owner, Pharmacist)
+- 🧾 Thermal & PDF Invoice Printing
+- 🔄 Backup & Restore System
+- 📊 Real-Time Reports & Analytics
 
-\---
+---
 
+## 🛠️ Tech Stack
 
+**Frontend:**
+- React.js (Vite)
+- CSS (Custom UI)
 
-\## 🚀 Project Overview
+**Backend:**
+- Node.js
+- Express.js
 
+**Database:**
+- PostgreSQL
+- Prisma ORM
 
+**Desktop App:**
+- Electron.js
 
-OnePoint Pharma is an offline \*\*desktop-based pharmacy management system\*\* designed to automate pharmacy operations such as:
+---
 
+## 📸 Application Screenshots
 
+### 🔐 Login Interface
+![Login](screenshots/login-main-interface.png)
 
-\* Fast billing \& invoicing
+---
 
-\* Stock \& inventory control
+### 💻 POS Billing System
+![POS](screenshots/pos-billing.png)
 
-\* Batch \& expiry tracking
+---
 
-\* Sales reporting
+### 📦 Inventory Management
+![Inventory](screenshots/inventory-management.png)
 
-\* Thermal \& PDF printing
+---
 
-\* Role-based access control (Admin / Owner / Pharmacist)
+### 👑 Owner Dashboard
+![Owner](screenshots/owner-panel.png)
 
 
+## 🔥 Key Features
 
-This system is built for \*\*small to medium pharmacies\*\* to reduce manual errors and improve efficiency.
+- Barcode-based fast billing
+- Automatic stock update after sale
+- Low stock alert system
+- Role-based secure authentication
+- Refund & return system
+- Real-time dashboard analytics
+- Offline-first desktop support
 
+---
 
+## ⚙️ Installation Guide
 
-\---
-
-
-
-\## 🛠 Tech Stack
-
-
-
-\* \*\*Frontend:\*\* React.js (Vite)
-
-\* \*\*Backend:\*\* Node.js + Express.js
-
-\* \*\*Database:\*\* PostgreSQL
-
-\* \*\*ORM:\*\* Prisma
-
-\* \*\*Desktop App:\*\* Electron.js
-
-\* \*\*Architecture:\*\* Modular MVC-like structure
-
-
-
-\---
-
-
-
-\## ✨ Key Features
-
-
-
-\### 💳 Billing System
-
-
-
-\* Fast POS checkout system
-
-\* Auto-calculated totals, VAT, discounts
-
-\* Instant invoice generation
-
-
-
-\### 📦 Inventory Management
-
-
-
-\* Medicine stock management
-
-\* Batch \& expiry tracking
-
-\* Low-stock alerts
-
-
-
-\### 🧾 Printing System
-
-
-
-\* Thermal printer support (instant print)
-
-\* A4 PDF invoice generation
-
-\* No preview mode for faster workflow
-
-
-
-\### 👨‍💼 Role-Based Access
-
-
-
-\* Admin, Owner, Pharmacist roles
-
-\* Secure authentication system
-
-
-
-\### 📊 Reports
-
-
-
-\* Daily sales summary
-
-\* Refund tracking
-
-\* Profit \& transaction overview
-
-
-
-\### 🔐 Backup System
-
-
-
-\* Automatic database backup
-
-\* Restore functionality for disaster recovery
-
-
-
-\---
-
-
-
-\## 🖥️ Project Architecture
-
-
-
-```
-
-pharmacy-system/
-
-&#x20;├── pos-ui/        (React Frontend)
-
-&#x20;├── src/           (Backend APIs)
-
-&#x20;├── prisma/        (Database Schema \& Migrations)
-
-&#x20;├── scripts/       (Backup \& Restore tools)
-
-&#x20;├── main.js        (Electron Main Process)
-
-&#x20;└── preload.js     (Secure IPC Bridge)
-
-```
-
-
-
-\---
-
-
-
-\## 🚀 Installation Guide
-
-
-
-```bash id="install1"
-
+```bash
+# Clone repository
 git clone https://github.com/milons2/onepoint-pharma.git
 
-cd onepoint-pharma
-
-
-
-\# Backend setup
-
+# Install dependencies
 npm install
 
+# Setup database
+npx prisma migrate dev
+npx prisma db seed
 
+# Run backend
+node src/server.js
 
-\# Frontend setup
-
+# Run frontend
 cd pos-ui
-
 npm install
-
 npm run dev
 
-```
+# Run Electron app
+npm run electron
 
+👨‍💻 Developer
 
+Jibanur Sarker
+💼 Computer Engineer
+📧 milons420@yahoo.com
 
-\---
+🎯 Project Purpose
+This system is designed to solve real pharmacy business problems:
 
+Manual billing errors
+Inventory mismanagement
+Lack of reporting systems
 
+⭐ Why This Project Stands Out
+Real-world production-level architecture
+Multi-role authentication system
+Desktop + Web hybrid system
+Complete pharmacy workflow automation
 
-\## 📸 Screenshots (Add Later)
-
-
-
-\* Dashboard UI
-
-\* POS Billing Screen
-
-\* Inventory Page
-
-\* Invoice Print View
-
-
-
-\---
-
-
-
-\## 👨‍💻 Developer
-
-
-
-\*\*Jibanur Sarker\*\*
-
-Computer Engineer
-
-Bangladesh
-
-
-
-\---
-
-
-
-\## 🎯 Project Purpose
-
-
-
-To build a \*\*real-world pharmacy automation system\*\* that can run offline and handle complete pharmacy operations in a single desktop application.
-
-
-
-\---
-
-
-
-\## 📌 Future Improvements
-
-
-
-\* Cloud synchronization
-
-\* Mobile companion app
-
-\* AI-based stock prediction
-
-\* Multi-branch pharmacy support
-
-
-
+📌 Future Improvements
+Cloud sync system
+Mobile app integration
+Online payment integration (bKash/Nagad)
+Multi-branch support
