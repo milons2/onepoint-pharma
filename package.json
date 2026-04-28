@@ -1,0 +1,77 @@
+{
+  "name": "onepoint-pharma",
+  "version": "1.0.0",
+  "description": "OnePoint Pharma Management System",
+  "main": "main.js",
+  "author": "Engineered by MS",
+  "license": "ISC",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "scripts": {
+    "dev": "electron .",
+    "build-ui": "cd pos-ui && npm run build",
+    "dist": "npm run build-ui && npx prisma generate && electron-builder",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "escpos": "^3.0.0-alpha.6",
+    "escpos-usb": "^3.0.0-alpha.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pdfkit": "^0.17.2",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "electron": "^29.4.0",
+    "electron-builder": "^24.13.3",
+    "prisma": "^5.22.0"
+  },
+  "build": {
+    "appId": "com.onepoint.pharma",
+    "productName": "OnePoint Pharma",
+    "directories": {
+      "output": "dist_electron",
+      "buildResources": "build"
+    },
+    "asar": true,
+    "asarUnpack": [
+      "src/**/*",
+      "scripts/**/*",
+      "db-bridge.js",
+      "preload.js",
+      "pos-ui/src/assets/op_logo.png"
+    ],
+    "files": [
+      "main.js",
+      "db-bridge.js",
+      "preload.js",
+      "src/**/*",
+      "pos-ui/dist/**/*",
+      "pos-ui/src/assets/op_logo.png",
+      ".env"
+    ],
+    "extraResources": [
+      { "from": "scripts", "to": "scripts" },
+      { "from": "pos-ui/src/assets", "to": "pos-ui/src/assets" },
+      { "from": "node_modules", "to": "node_modules" },
+      { "from": "prisma", "to": "prisma" },
+      { "from": ".env", "to": ".env" }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/op_ico.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "OnePoint-Pharma-Setup.exe"
+    }
+  }
+}

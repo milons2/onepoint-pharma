@@ -1,0 +1,177 @@
+/* --- Overlay & Container --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px); /* Modern frosted glass effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.3);
+  border-top: 8px solid #10b981; /* Brand Medical Teal */
+  animation: modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes modalSlideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Header Section --- */
+.modal-card h2 {
+  color: #1e293b;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-card h2::after {
+  content: "OFFICIAL FISCAL RECORD";
+  font-size: 10px;
+  color: #94a3b8;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* --- Summary List Logic --- */
+.summary-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Tight gaps like a receipt */
+  border-top: 2px dashed #e2e8f0;
+  border-bottom: 2px dashed #e2e8f0;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.summary-grid div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.summary-grid div:hover {
+  background: #f8fafc;
+}
+
+.summary-grid span {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-grid strong {
+  font-family: 'JetBrains Mono', 'Courier New', monospace; /* Professional Monospaced numbers */
+  font-size: 1.15rem;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+/* --- Specific Item Styling --- */
+.refund-line, .refund {
+  background: #fff1f2 !important; /* Soft medical red */
+  color: #be123c;
+}
+
+.refund-line strong {
+  color: #e11d48 !important;
+}
+
+.net {
+  background: #f0fdf4 !important; /* Soft medical green */
+  margin-top: 8px;
+  border: 1px solid #bbf7d0;
+}
+
+.net span {
+  color: #166534;
+  font-weight: 800;
+}
+
+.net strong {
+  color: #10b981;
+  font-size: 1.4rem !important;
+}
+
+/* --- Status & Feedback --- */
+.loading {
+  color: #0ea5e9;
+  font-weight: 600;
+  text-align: center;
+  padding: 20px;
+}
+
+.error {
+  background: #fef2f2;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  border: 1px solid #fee2e2;
+  margin: 10px 0;
+}
+
+/* --- Actions --- */
+.close-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  background: #1e293b; /* Executive dark blue */
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
+}
+
+.close-btn:hover {
+  background: #0f172a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(30, 41, 59, 0.3);
+}
+
+.close-btn:active {
+  transform: translateY(0);
+}
+
+/* Custom bKash highlight for the Z-Summary */
+.bkash-highlight span {
+  color: #d1005d; /* bKash Brand Pink */
+  font-weight: 700;
+}
+
+.bkash-highlight {
+  background: rgba(209, 0, 93, 0.03); /* Very light pink tint */
+  border-left: 3px solid #d1005d;
+  padding-left: 9px !important;
+}
+
+/* Ensure all monospaced numbers align */
+.summary-grid strong {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,81 @@
+/* =========================================
+   ONEPOINT PHARMA - ELECTRON FOOTER UI
+   ========================================= */
+
+.dashboard-footer {
+  height: 32px;
+  background: #182A44 !important; /* Brand Navy */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  font-size: 12px;
+  font-weight: 500;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* POSITIONING FOR ELECTRON */
+  position: relative; 
+  width: 100%;
+  z-index: 1000;
+}
+
+/* GLOBAL TEXT COLOR FIX */
+.dashboard-footer span, 
+.dashboard-footer p, 
+.dashboard-footer div {
+  color: #ffffff !important; /* All text now white for visibility */
+  opacity: 0.9;
+}
+
+.footer-left, 
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.4px;
+}
+
+.status-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* THE PULSING TEAL DOT */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #00a896; 
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 168, 150, 0.8);
+}
+
+.status-dot.pulse::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #00a896;
+  border-radius: 50%;
+  animation: statusPulse 2.5s infinite ease-out;
+}
+
+@keyframes statusPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+/* BRAND EMPHASIS */
+.brand-accent {
+  color: #00d1ba !important; /* Teal accent for the brand name */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

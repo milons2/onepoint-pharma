@@ -1,0 +1,428 @@
+/* =========================================
+   PROFESSIONAL MEDICAL ADMIN THEME
+   ========================================= */
+
+:root {
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --glass-effect: rgba(255, 255, 255, 0.9);
+  --med-navy: #0f172a;
+  --med-blue: #2563eb;
+  --med-bg: #f4f7fa;
+  --clinical-white: #ffffff;
+  --border-color: #e2e8f0;
+  --text-main: #334155;
+  --text-muted: #64748b;
+  
+  /* Status Colors */
+  --critical-red: #dc2626;
+  --warning-amber:#0284c7 ;
+  --success-teal: #0d9488;
+  --info-sky: #d97706;
+}
+/* Center the main container content */
+
+
+/* Center the Header and Subtitles */
+.page-header {
+  display: flex;
+  flex-direction: column; /* Stack vertically for centering */
+  align-items: center;    /* Center the items horizontally */
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 2rem;
+}
+
+/* Ensure the header-left grouping is centered */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Add spacing between the title and the date pill below it */
+.header-right {
+  margin-top: 1.5rem;
+}
+
+.role-badge-top {
+  background: var(--med-navy);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.navy-title-main {
+  color: var(--med-navy);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.subtitle {
+  color: #718096;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.date-pill-branded {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  color: var(--med-teal);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid #edf2f7;
+}
+
+/* Adjust the stats grid to maintain its look while parent is centered */
+
+
+/* Center Alignment for the Headers as requested */
+/* Scoped Admin Styles - Will not affect Owner Panel */
+/* --- Professional Medical Theme for OnePoint Pharma --- */
+.adm-content {
+  padding: 2rem;
+  background-color: var(--med-bg);
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* --- Stats Grid: Modern Glassmorphism & Depth --- */
+.adm-stats-grid-premium {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.adm-stat-card-pro {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.adm-stat-card-pro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.adm-stat-icon-pro {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  padding: 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adm-stat-data span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.adm-stat-data h3 {
+  font-size: 1.75rem;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.adm-stat-data small {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* Background Gradients */
+.adm-sales-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+.adm-expired-bg { background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%); }
+.adm-expiry-bg { background: linear-gradient(135deg, #92400e 0%, #d97706 100%); }
+.adm-stock-bg { background: linear-gradient(135deg, #075985 0%, #0284c7 100%); }
+
+/* --- Actionable Alerts Panels --- */
+.adm-alerts-layout-pro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.adm-alert-panel-pro {
+  background: var(--clinical-white);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  max-height: 450px;
+  border: 1px solid var(--border-color);
+}
+
+.adm-panel-header-pro {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafbfc;
+  border-radius: 16px 16px 0 0;
+}
+
+.adm-panel-header-pro h4 {
+  margin: 0;
+  color: var(--med-navy);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.adm-count-tag {
+  background: var(--med-navy);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.adm-sales-bg {
+  background: linear-gradient(135deg, #064e3b 0%, #059669 100%); /* Medical Emerald Green */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.adm-stat-data h3 {
+  font-family: 'JetBrains Mono', 'Courier New', monospace; /* Professional Monospace for currency */
+  letter-spacing: -1px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.adm-stat-data span {
+  color: #a7f3d0; /* Soft mint text for the label */
+  font-size: 0.7rem;
+  letter-spacing: 1.2px;
+}
+
+/* Alerts Borders & Criticality */
+.adm-critical-pro-border { border-left: 6px solid var(--critical-red); }
+.adm-danger-pro-border { border-left: 6px solid var(--warning-amber); }
+.adm-warning-pro-border { border-left: 6px solid var(--info-sky); }
+
+/* --- List Items --- */
+.adm-scroll-list-area {
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.adm-scroll-list-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.adm-scroll-list-area::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.adm-list-item-pro {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.adm-list-item-pro:hover {
+  background-color: #f8fafc;
+  border-color: var(--border-color);
+  transform: scale(1.01);
+}
+
+.adm-med-name-pro {
+  display: block;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.adm-item-meta-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.adm-item-meta-sub .separator {
+  color: var(--border-color);
+}
+
+/* --- Action Area --- */
+.adm-item-action-area {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.qty-val {
+  font-weight: 700;
+  color: var(--med-navy);
+  font-size: 0.85rem;
+}
+
+.adm-action-pill-btn {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: var(--med-blue);
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.adm-list-item-pro:hover .adm-action-pill-btn {
+  background: var(--med-blue);
+  color: white;
+}
+
+/* --- Loading State --- */
+.adm-loading-state-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  color: var(--text-muted);
+}
+
+.adm-pulse-loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e2e8f0;
+  border-top: 5px solid var(--med-blue);
+  border-radius: 50%;
+  animation: adm-spin 1s cubic-bezier(0.53, 0.21, 0.29, 0.67) infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes adm-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Sidebar Styling (Premium) */
+.sidebar {
+  background: var(--med-navy);
+  color: white;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar-brand h2 {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #e2e8f0;
+}
+
+.sidebar-brand span {
+  color: #4fd1c5;
+  font-weight: 300;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.nav-link.active {
+  background: #4fd1c5;
+  color: var(--med-navy);
+}
+
+.logout-btn-premium {
+  margin-top: auto;
+  background: rgba(203, 36, 49, 0.1);
+  border: 1px solid rgba(203, 36, 49, 0.2);
+  color: #fc8181;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.logout-btn-premium:hover {
+  background: #c53030;
+  color: white;
+}
+
+/* Loader */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+}
+
+.pulse-loader {
+  width: 40px;
+  height: 40px;
+  background-color: var(--med-teal);
+  border-radius: 100%;
+  animation: sk-pulseScaleOut 1s infinite ease-in-out;
+}
+
+@keyframes sk-pulseScaleOut {
+  0% { transform: scale(0); }
+  100% { transform: scale(1.0); opacity: 0; }
+}

@@ -1,0 +1,877 @@
+/* =========================================
+   ONEPOINT PHARMA - ENTERPRISE INVENTORY
+   ========================================= */
+
+:root {
+  --navy: #1a2b48;
+  --teal: #00a896;
+  --bg: #f8fafc;
+  --border: #e2e8f0;
+  --white: #ffffff;
+}
+
+.inventory-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.inventory-page h2 {
+  color: var(--navy);
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+/* 1. TOP CARDS & FORMS */
+.card {
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+.card.medicine-entry-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8edf3;
+  transition: 0.3s ease;
+}
+
+.card.medicine-entry-card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  align-items: center;
+}
+
+.form-grid input, 
+.form-grid select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-grid input:focus, 
+.form-grid select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.1);
+}
+
+/* 2. MASTER-DETAIL LAYOUT */
+.inventory-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+/* MEDICINE LIST SIDEBAR */
+.medicine-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.med-info-wrapper {
+  display: flex;
+  justify-content: space-between; /* This creates the space in the middle */
+  align-items: center;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.med-name {
+  font-weight: 500;
+  color: #1e293b;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.med-cat-badge {
+  font-size: 11px;
+  background: #d8d8d8; /* Light gray background */
+  color: #64748b;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* When the item is selected/active */
+.medicine-list li.active .med-cat-badge {
+  background: rgba(255, 255, 255, 0.2); /* White transparent badge when active */
+  color: #0d0d0d;
+}
+
+.medicine-list li.active .med-name {
+  color: #060ef7;
+}
+
+.medicine-list li {
+  cursor: pointer;
+  padding: 12px 15px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.medicine-list li:hover {
+  background-color: #d3f0f0;
+}
+
+.medicine-list li.active {
+  background: rgba(183, 246, 228, 0.963);
+  border-color: var(--teal);
+}
+
+.medicine-list li b {
+  color: var(--navy);
+  font-size: 15px;
+}
+
+.medicine-list li small {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* 3. PROFESSIONAL DATA TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+thead th {
+  background: #f1f5f9;
+  color: var(--navy);
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border);
+}
+
+tbody td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #334155;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* 4. BUTTON THEMES */
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary { background: var(--navy); color: white; padding: 10px 20px; border-radius: 8px; }
+.btn-success { background: var(--teal); color: white; padding: 10px 20px; border-radius: 8px; }
+.btn-danger { background: #ef4444; color: white; padding: 8px 16px; border-radius: 6px; }
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: var(--navy);
+}
+
+.btn-sm.danger { color: #ef4444; }
+.btn-sm:hover { filter: brightness(0.9); }
+
+/* 5. MODAL SYSTEM */
+/* 1. The Overlay (Background) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.7); /* Modern dark slate overlay */
+  backdrop-filter: blur(4px); /* Premium blur effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* 2. The Branded Modal Card */
+.branded-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 420px; /* Slightly wider for better form spacing */
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border-top: 6px solid #00a896;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 3. Header - Forced Left Alignment */
+.modal-header {
+  text-align: left; /* Explicitly left */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #d3e6f7;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.modal-subtitle {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  margin: 0;
+  text-align: left; /* Guaranteed left */
+}
+
+/* 4. Form Layout */
+.modal-form-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field input {
+  padding: 10px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #00a896;
+  box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.1);
+}
+
+/* 5. Footer Actions */
+.modal-actions-vertical {
+  display: flex;
+  flex-direction: column; /* Stacks buttons for a modern look */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-success {
+  background: #00a896;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cancel {
+  background: transparent;
+  color: #64748b;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  color: #0f172a;
+  text-decoration: underline;
+}
+
+
+.modal-actions-vertical .btn-success {
+  height: 45px;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.modal-actions-vertical .btn-cancel {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.modal-actions-vertical .btn-cancel:hover {
+  color: #ef4444;
+}
+
+/* SPECIFIC PRICE COLORS */
+.buy-input { background-color: #f8fafc; }
+.sell-input { border-left: 3px solid #00a896 !important; font-weight: 600; }
+
+/* MODAL BUTTONS */
+.modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.modal-actions button {
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ICON & LABEL ALIGNMENT */
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a2b48;
+  margin-bottom: 4px;
+  
+}
+
+.field label svg {
+  color: #00a896; /* OnePoint Teal Icons */
+}
+
+/* Modal Polish */
+.branded-modal {
+  animation: modalSlideUp 0.3s ease-out; /* Smooth entrance */
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-actions-vertical .btn-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.modal-actions-vertical .btn-success:active {
+  transform: scale(0.98); /* Slight click effect */
+}
+
+/* UTILS */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FORM ENHANCEMENTS */
+.form-title {
+  font-size: 18px;
+  color: #1a2b48;
+  margin-bottom: 20px;
+  border-left: 4px solid #00a896;
+  padding-left: 12px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.input {
+  background: #fcfcfc;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  background: #ffffff;
+  border-color: #00a896;
+  box-shadow: 0 0 0 4px rgba(0, 168, 150, 0.08);
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+/* Specific button for forms */
+.btn-success {
+  width: 100%;
+  justify-content: center;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(0, 168, 150, 0.2);
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 168, 150, 0.3);
+}
+
+/* SEARCH BOX STYLING */
+.search-box {
+  position: relative;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  background: #fcfcfc;
+}
+
+/* EMPTY STATE UI */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: #94a3b8;
+  gap: 15px;
+  text-align: center;
+}
+
+/* TABLE ENHANCEMENTS */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+}
+
+.low-stock {
+  color: #ef4444;
+  font-weight: 800;
+  background: rgba(239, 68, 68, 0.1);
+  text-align: center;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.table-actions button {
+  background: #f1f5f9;
+  border-radius: 4px;
+  padding: 5px;
+  color: #64748b;
+}
+
+.table-actions button:hover {
+  background: #1a2b48;
+  color: white;
+}
+
+.table-actions button.danger:hover {
+  background: #ef4444;
+}
+
+.section-divider {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px dashed #e2e8f0;
+  color: #1a2b48;
+}
+
+.btn-cancel {
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-cancel:hover { background: #e2e8f0; color: #1e293b; }
+
+.btn-danger-outline {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.btn-danger-outline:hover { background: #fef2f2; border-color: #ef4444; }
+
+.full-w { width: 100%; height: 40px; margin-top: auto; }
+
+.no-batches {
+  padding: 40px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  text-align: center;
+  color: #64748b;
+  border-radius: 10px;
+}
+
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; }
+
+.form-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* TABLE PRICE COLUMN STYLING */
+.buy-price-cell {
+  color: #6a7d99; /* Subtle color for buy price */
+  font-size: 13px;
+}
+
+.sell-price-cell {
+  color: #00a896; /* Brand color for sell price */
+  font-weight: 700;
+}
+
+/* PREVENT CSS BREAKAGE IN BATCH FORM */
+.batch-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  gap: 15px;
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-field input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.action-bottom {
+  grid-column: span 3; /* Button takes full width at the bottom */
+  margin-top: 10px;
+}
+
+.section-divider {
+  margin: 25px 0 15px 0;
+  font-size: 14px;
+  color: #1e293b;
+  border-bottom: 2px solid #00a896;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Navy & Uppercase Medicine Title */
+.selected-med-title {
+  color: #1a2b48 !important; /* OnePoint Navy */
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
+}
+
+.selected-med-title small {
+  color: #94a3b8;
+  text-transform: none;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+/* Quick Add Form Labels with Icons */
+.batch-form-grid .input-field label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.batch-form-grid .input-field label svg {
+  color: #00a896; /* OnePoint Teal Icons */
+}
+
+/* Form Input Focus Effect */
+.batch-form-grid input:focus {
+  border-color: #00a896;
+  box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.1);
+  outline: none;
+}
+
+/* === INVENTORY FORM SAFE === */
+.inventory-form-safe {
+  position: relative;
+}
+
+/* =========================================
+   SEARCHABLE SELECT - PRO PROFESSIONAL UI
+========================================= */
+
+/* Wrapper */
+.searchable-select {
+  position: relative;
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Label */
+.searchable-select label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+/* Input Field */
+.searchable-select input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #dbe2ea;
+  background: #f9fbfd;
+  transition: all 0.25s ease;
+}
+
+/* Focus Effect */
+.searchable-select input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Dropdown Container */
+.searchable-select .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #dbe2ea;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  overflow: hidden;
+}
+
+
+/* Scrollable List */
+.searchable-select .dropdown-list {
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 6px 0;
+}
+
+/* Classic Thin Scrollbar */
+.searchable-select .dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.searchable-select .dropdown-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+}
+
+.searchable-select .dropdown-list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dropdown Item */
+.searchable-select .dropdown-item {
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover Effect */
+.searchable-select .dropdown-item:hover {
+  background: #f1f5f9;
+}
+
+/* Selected / Active Item */
+.searchable-select .dropdown-item.active {
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Empty state */
+.searchable-select .no-results {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+
+.select-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-top: 6px;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.select-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.select-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.select-list {
+  max-height: 220px; /* 🔥 scroll limit */
+  overflow-y: auto;
+}
+
+.select-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.select-item:hover {
+  background: #f1f5f9;
+}
+
+.select-empty {
+  padding: 10px;
+  text-align: center;
+  color: #9ca3af;
+}
+.medicine-list-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e2e8f0; /* light gray line */
+  background: #f9fafb;
+}
+
+.recent-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #2563eb; /* blue text */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

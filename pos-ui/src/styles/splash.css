@@ -1,0 +1,114 @@
+/* =========================================
+   AUTHENTIC ONEPOINT SPLASH INTERFACE
+   ========================================= */
+
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #182A44; /* Deep Brand Navy */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.splash-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LOGO CONTAINER & LIGHTING */
+.logo-container {
+  margin-bottom: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-logo-main {
+  width: 320px; /* Increased for high-valuation presence */
+  height: auto;
+  /* Multi-layered glow to ensure navy-on-navy visibility */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15)) 
+          drop-shadow(0 0 25px rgba(0, 168, 150, 0.2));
+  animation: logoShine 3s ease-in-out infinite;
+  will-change: filter, transform;
+}
+
+/* SMART LOADING BAR */
+.loading-bar-container {
+  width: 260px; /* Wider bar for better balance with large logo */
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin: 20px auto;
+}
+
+.loading-bar-progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00a896, #00d1ba); /* Gradient teal */
+  box-shadow: 0 0 10px rgba(0, 168, 150, 0.5);
+  animation: progressFill 2.5s forwards cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* STATUS & VERSION TYPOGRAPHY */
+.status-msg {
+  height: 24px;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.version-tag {
+  margin-top: 45px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.503);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0.8;
+}
+
+/* ANIMATIONS */
+@keyframes logoShine {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.35)) 
+            drop-shadow(0 0 40px rgba(0, 168, 150, 0.2))
+            brightness(1.15); /* Makes dark navy visible */
+    transform: scale(1.03);
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+    transform: scale(1);
+  }
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  10% { width: 5%; }
+  40% { width: 45%; }
+  70% { width: 90%; }
+  100% { width: 100%; }
+}

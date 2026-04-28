@@ -1,0 +1,121 @@
+/* Container for the whole Pharmacist Dashboard */
+.pharmacist-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 260px; /* Fixed width */
+  min-width: 260px;
+  background-color: #0f172a; /* Darker Navy */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar-brand h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.sidebar-brand span {
+  color: #2dd4bf; /* Pharma Teal */
+}
+
+.role-badge-pharmacist {
+  background: rgba(45, 212, 191, 0.2);
+  color: #2dd4bf;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+/* Navigation Links */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.nav-link.active {
+  background: #1e293b;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Logout Button */
+.logout-btn-premium {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn-premium:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* THE FIX: Main Content Area */
+.pharmacist-content-wrapper {
+  flex: 1; /* This takes the rest of the horizontal space */
+  height: auto;
+  min-height:100%;
+  overflow-y: auto; /* Independent scroll for the POS area */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure Pos component takes full width inside wrapper */
+.pharmacist-content-wrapper > div {
+  width: 100%;
+  max-width: 1400px; /* Optional: cap maximum width for very large screens */
+  margin: 0 auto;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

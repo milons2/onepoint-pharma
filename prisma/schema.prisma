@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "windows"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  medicines Medicine[]
+}
+
+model Supplier {
+  id        Int        @id @default(autoincrement())
+  name      String
+  phone     String?
+  medicines Medicine[]
+}
+
+model Medicine {
+  id         Int      @id @default(autoincrement())
+  name       String
+  categoryId Int
+  supplierId Int
+  barcode    String?  @unique
+  isActive   Boolean  @default(true)
+  batches    Batch[]
+  category   Category @relation(fields: [categoryId], references: [id])
+  supplier   Supplier @relation(fields: [supplierId], references: [id])
+
+  @@index([name])
+}
+
+model Batch {
+  id           Int           @id @default(autoincrement())
+  medicineId   Int
+  batchNo      String
+  expiryDate   DateTime
+  buyPrice     Float
+  sellPrice    Float
+  quantity     Int
+  medicine     Medicine      @relation(fields: [medicineId], references: [id])
+  invoiceItems InvoiceItem[]
+
+  @@index([expiryDate])
+}
+
+model Invoice {
+  id           Int           @id @default(autoincrement())
+  createdAt    DateTime      @default(now())
+  total        Float
+  customerName String
+  profit       Float
+  invoiceNo    String
+  staffId      Int
+  subtotal     Float
+  paymentType  String?       @default("CASH")
+  items        InvoiceItem[]
+  Refund       Refund[]
+}
+
+model InvoiceItem {
+  id         Int          @id @default(autoincrement())
+  invoiceId  Int
+  batchId    Int
+  quantity   Int
+  buyPrice   Float
+  sellPrice  Float
+  batch      Batch        @relation(fields: [batchId], references: [id])
+  invoice    Invoice      @relation(fields: [invoiceId], references: [id])
+  RefundItem RefundItem[]
+
+  @@index([invoiceId])
+  @@index([batchId])
+}
+
+model Staff {
+  id        Int      @id(map: "Staff_pkey") @default(autoincrement())
+  name      String
+  username  String   @unique(map: "Staff_username_key")
+  password  String
+  role      Role
+  phone     String?
+  email     String?
+  notifications Notification[]
+  createdAt DateTime @default(now())
+  Refund    Refund[]
+
+  @@map("staff")
+}
+
+model InvoiceSequence {
+  year   Int  @unique
+  lastNo Int? @default(0)
+}
+
+model Refund {
+  id           Int          @id @default(autoincrement())
+  refundno     String       @unique
+  invoiceId    Int
+  staffId      Int
+  reason       String?
+  refundType   String
+  refundAmount Float
+  createdAt    DateTime?    @default(now()) @db.Timestamp(6)
+  Invoice      Invoice      @relation(fields: [invoiceId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_refund_invoice")
+  staff        Staff        @relation(fields: [staffId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_refund_staff")
+  RefundItem   RefundItem[]
+}
+
+model RefundItem {
+  id            Int         @id @default(autoincrement())
+  refundId      Int
+  invoiceItemId Int
+  quantity      Int
+  sellPrice     Float
+  returnStock   Boolean?    @default(true)
+  InvoiceItem   InvoiceItem @relation(fields: [invoiceItemId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_refunditem_invoiceitem")
+  Refund        Refund      @relation(fields: [refundId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_refunditem_refund")
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  message   String
+  severity  String   @default("low")
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  staffId   Int
+  staff     Staff    @relation(fields: [staffId], references: [id])
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  PHARMACIST
+}

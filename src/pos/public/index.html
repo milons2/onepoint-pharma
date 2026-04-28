@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OnePoint Pharma</title>
+  <link rel="stylesheet" href="css/pos.css">
+</head>
+<body>
+
+<h2>🧾OnePoint Pharma</h2>
+<h3>All Medicines, Trusted One Point</h3>
+
+<input id="barcode" placeholder="Scan barcode here" autofocus />
+<button onclick="addItem()">Add</button>
+
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th>Medicine</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody id="cart"></tbody>
+</table>
+
+<h3>Total: <span id="total">0</span></h3>
+<button onclick="checkout()">Checkout</button>
+
+<script src="js/pos.js"></script>
+</body>
+</html>
